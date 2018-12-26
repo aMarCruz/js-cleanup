@@ -30,10 +30,10 @@
   ],
   "author": "aMarCruz <amarcruzbox-git@yahoo.com>",
   "license": "MIT",
-  "homepage": "https://github.com/aMarCruz/rmcomms",
-  "bugs": "https://github.com/aMarCruz/rmcomms/issues",
+  "homepage": "https://github.com/aMarCruz/js-cleanup",
+  "bugs": "https://github.com/aMarCruz/js-cleanup/issues",
   "repository": {
-    "url": "https://github.com/aMarCruz/rmcomms",
+    "url": "https://github.com/aMarCruz/js-cleanup",
     "type": "git"
   },
   "dependencies": {
