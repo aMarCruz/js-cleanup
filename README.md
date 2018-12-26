@@ -135,9 +135,9 @@ Thanks for your support!
 
 The [MIT License](LICENCE) (MIT)
 
-[npm-badge]:      https://img.shields.io/npm/v/js-cleanup.svg
+[npm-badge]:      https://badgen.net/npm/v/js-cleanup
 [npm-url]:        https://www.npmjs.com/package/js-cleanup
-[license-badge]:  https://img.shields.io/npm/l/express.svg
+[license-badge]:  https://badgen.net/github/license/aMarCruz/js-cleanup
 [license-url]:    https://github.com/aMarCruz/js-cleanup/blob/master/LICENSE
 [build-badge]:    https://travis-ci.org/aMarCruz/js-cleanup.svg?branch=master
 [build-url]:      https://travis-ci.org/aMarCruz/js-cleanup
