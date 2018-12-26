@@ -37,7 +37,7 @@ $ yarn add js-cleanup -D
 ## Usage
 
 ```typescript
-jsCleanup(sourceCode: string, options: Options): Result;
+jsCleanup(sourceCode: string, fileName?: string | null, options?: Options): Result;
 ```
 
 ### Result
@@ -116,10 +116,10 @@ You can set custom filters through regexes that matches the content of the comme
 
 The string to which the regex is applied does not includes the first slash, nor the `*/` terminator of the multiline comments, so the multiline comments begins with an asterisk (`*`) and single-line comments begins with a slash (`/`).
 
-For example, the following filters will preserve sourcemap directives and _multiline_ comments starting with a dash:
+For example, the following filters will preserve ESLint directives and _multiline_ comments starting with a dash:
 
 ```js
-  jsCleanup(code, { comments: ['sources', /^\*-/] })
+const cleanedCode = jsCleanup(code, null, { comments: ['eslint', /^\*-/] })
 ```
 
 ## Support my Work

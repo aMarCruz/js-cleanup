@@ -7,11 +7,11 @@ type CleanResult = import('..').Result
 /**
  * Get the options for the sourcemap.
  */
-const getMapOpts = (options: UserOptions, file?: string) => {
+const getMapOpts = (options: UserOptions, file?: string | null) => {
   const opts = options.sourcemapOptions || {}
 
   return {
-    source: file,
+    source: file || '',
     includeContent: opts.includeContent === true,
     inlineMap: opts.inlineMap === true,
     hires: opts.hires !== false,
@@ -25,7 +25,7 @@ const getMapOpts = (options: UserOptions, file?: string) => {
  * @param file Source filename
  * @param options User options
  */
-const genChangedRes = (ctx: Context, file: string, options: UserOptions) => {
+const genChangedRes = (ctx: Context, file: string | null | undefined, options: UserOptions) => {
 
   const mapOpts = options.sourcemap !== false && getMapOpts(options, file)
   const result: CleanResult = {
@@ -52,7 +52,7 @@ const genChangedRes = (ctx: Context, file: string, options: UserOptions) => {
  * @param file Source filename
  * @param options User options
  */
-const cleanup = function (code: string, file: string, options: UserOptions): CleanResult {
+const cleanup = function (code: string, file?: string | null, options?: UserOptions): CleanResult {
   options = options || {}
 
   const context = createContext(code, options)

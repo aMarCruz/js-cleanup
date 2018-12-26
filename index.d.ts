@@ -3,7 +3,7 @@ export = cleanup
 
 declare function cleanup (
   source: string,
-  file?: string,
+  file?: string | null,
   options?: cleanup.Options
 ): cleanup.Result
 
@@ -17,21 +17,23 @@ declare namespace cleanup {
      */
     comments?: string | RegExp | Array<string | RegExp>
     /**
-     * Determinates if the content of the comments that are preserved should
-     * be compacted.
+     * Should js-cleanup also compact whitespace and blank lines
+     * in the preserved multiline comments?
+     *
+     * Line-ending normalization is always done.
      * @default true
      */
     compactComments?: boolean
-    /**
-     * Maximum number of successive empty lines to be preserved.
-     * @default 0
-     */
-    maxEmptyLines?: number
     /**
      * Type of line-endings for normalization.
      * @default 'unix'
      */
     lineEndings?: 'unix' | 'mac' | 'win'
+    /**
+     * Maximum successive empty lines to preserve in the output.
+     * @default 0
+     */
+    maxEmptyLines?: number
     /**
      * Should generate sourcemap?
      * @default true
@@ -41,8 +43,11 @@ declare namespace cleanup {
      * Sourcemap options
      */
     sourcemapOptions?: {
+      /** @default false */
       includeContent?: boolean
+      /** @default false */
       inlineMap?: boolean
+      /** @default true */
       hires?: boolean
     }
   }
