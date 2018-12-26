@@ -3,6 +3,7 @@
 [![npm Version][npm-badge]][npm-url]
 [![License][license-badge]][license-url]
 [![Build Status][build-badge]][build-url]
+[![Maintainability][climate-badge]][climate-url]
 [![Coverage][cover-badge]][cover-url]
 
 Smart comment and whitespace cleaner for JavaScript-like files.
@@ -140,6 +141,8 @@ The [MIT License](LICENCE) (MIT)
 [license-url]:    https://github.com/aMarCruz/js-cleanup/blob/master/LICENSE
 [build-badge]:    https://travis-ci.org/aMarCruz/js-cleanup.svg?branch=master
 [build-url]:      https://travis-ci.org/aMarCruz/js-cleanup
+[climate-badge]:  https://api.codeclimate.com/v1/badges/0618a24189f355bd508d/maintainability
+[climate-url]:    https://codeclimate.com/github/aMarCruz/js-cleanup/maintainability
 [cover-badge]:    https://codecov.io/gh/aMarCruz/js-cleanup/branch/master/graph/badge.svg
 [cover-url]:      https://codecov.io/gh/aMarCruz/js-cleanup
 [size-badge]:     https://badgen.net/bundlephobia/min/js-cleanup
