@@ -56,6 +56,29 @@ describe('TypeScript', function () {
     testStr(source, expected, { comments: 'ts' })
   })
 
+  it('"ts3s" must preserve only Triple-Slash directives.', function () {
+    const source = [
+      '//@ts-check',
+      '/// <reference path="foo.bar" />',
+      '/// <reference types=\'node\' />',
+      '///<amd-module />',
+      '/* @jsx preact.h */',
+      'class Main {',
+      '  //@ts-ignore',
+      '  constructor() {}',
+      '}',
+    ]
+    const expected = [
+      '/// <reference path="foo.bar" />',
+      '/// <reference types=\'node\' />',
+      '///<amd-module />',
+      'class Main {',
+      '  constructor() {}',
+      '}',
+    ]
+    testStr(source, expected, { comments: 'ts3s' })
+  })
+
 })
 
 describe('Flow', function () {

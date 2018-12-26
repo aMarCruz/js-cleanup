@@ -11,12 +11,12 @@ Smart comment and whitespace cleaner for JavaScript-like files.
 
 With js-cleanup you have:
 
-* Removal of JavaScript comments through powerful filters (configurable).
-* Normalization of line endings to Unix, Mac, or Windows.
-* Empty lines compactation (configurable).
-* Removal of trailing whitespace, preserving ES6 Template Literal Strings.
-* TypeScript definitions.
-* Sourcemap support.
+- Removal of JavaScript comments through powerful filters (configurable).
+- Normalization of line endings to Unix, Mac, or Windows.
+- Empty lines compactation (configurable).
+- Removal of trailing whitespace, preserving ES6 Template Literal Strings.
+- TypeScript definitions.
+- Sourcemap support.
 
 js-cleanup is not locked to a particular JavaScript dialect and must work in any JS-like file: TypeScript, ES2019, etc, but it is more of a post-processor, so it should run at a later stage of your toolchain, after any preprocessor or transpiler.
 
@@ -77,7 +77,7 @@ Type definition:
 
 Name               | Default   | Description
 ------------------ | --------- | ------------
-comments           | 'some'    | Filter or array of filter names and/or regexes.<br>Use "all" to keep all, or "none" to remove all the comments.
+comments           | 'some'    | Filter or array of filters that determinates which comments should be preserved.<br>Use "all" to keep all, or "none" to remove all the comments.
 compactComments    | true      | Should js-cleanup also compact whitespace and blank lines in the preserved multiline comments?<br>Line-ending normalization is always done.
 maxEmptyLines      | 0         | Maximum successive empty lines to preserve in the output.<br>Use -1 to preserve all the lines
 lineEndings        | 'unix'    | Line-ending type for normalization (always done).
@@ -91,20 +91,21 @@ _**Note:**<br>If you want to keep JSDoc comments, you should also set `compactCo
 
 ## Predefined Comment Filters
 
-Instead the special 'all' or 'none' keywords, you can use any combination of this premaded filters:
+Instead the special 'all' or 'none' keywords, you can use any combination of custom filters along with any of these predefined ones:
 
 Name     | Will preserve...
 -------- | -----------------
 some     | Comments containing "@license", "@preserve", or starting with "!".
 license  | Comments containing "@license".
 eslint   | [ESLint](http://eslint.org/docs/user-guide/configuring) directives.
-flow     | [Flow](https://flow.org/en/docs) directives, including [flowlint](https://flow.org/en/docs/linting/).
+flow     | Facebook [Flow](https://flow.org/en/docs) directives, [comment types](https://flow.org/en/docs/types/comments/), and [flowlint](https://flow.org/en/docs/linting/flowlint-comments/) comments.
 istanbul | [istanbul](https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md) ignore comments.
 jsdoc    | [JSDoc](http://usejsdoc.org/) comments.
 jshint   | [JSHint](http://jshint.com/docs/#inline-configuration) directives.
 jslint   | [JSLint](http://www.jslint.com/help.html) directives.
-sources  | [sourcemap](http://source-map.github.io/) directives (`sourceURL` and `sourceMappingURL`).
-ts       | [TypeScript](http://www.typescriptlang.org/) directives, including @jsx and triple-slash.
+sources  | Sourcemap directives [sourceURL](https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/#toc-sourceurl) and [sourceMappingURL](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit#heading=h.9ppdoan5f016).
+ts       | MS [TypeScript](http://www.typescriptlang.org/) Triple-Slash and @ts-* directives, plus the @jsx pragma.
+ts3s     | TypeScript [Triple-Slash](http://www.typescriptlang.org/docs/handbook/triple-slash-directives.html) directives.
 
 _**Note:**<br>Since none of this filters is really accurate (js-cleanup is not a parser), they are suitable for the job without introducing greater complexity._
 
@@ -112,9 +113,9 @@ See the regexes in [src/predef-filters.ts](https://github.com/aMarCruz/js-cleanu
 
 ### Custom Filters
 
-You can set custom filters through regexes that matches the content of the comments that you want to preserve.
+A custom filter is a regex that must match the content of the comments that you want to preserve.
 
-The string to which the regex is applied does not includes the first slash, nor the `*/` terminator of the multiline comments, so the multiline comments begins with an asterisk (`*`) and single-line comments begins with a slash (`/`).
+The content of the comments tested by each filter does not includes the first slash, nor the `*/` terminator of the multiline comments, so the multiline comments begins with an asterisk (`*`) and single-line comments begins with a slash (`/`).
 
 For example, the following filters will preserve ESLint directives and _multiline_ comments starting with a dash:
 

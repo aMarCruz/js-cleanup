@@ -51,7 +51,7 @@ describe('Sourcemap support', function () {
     const minSrc = result.code.replace(';charset=utf-8', '')
     const mapPos = minSrc.indexOf('\n//# sourceMappingURL=data:application/json;')
 
-    expect(mapPos).toBeGreaterThan(0, 'Expected an inlined sourcemap but it not there.')
+    expect(mapPos).toBeGreaterThan(0, 'Expected an inlined sourcemap but it is not there.')
     expect(fs.readFileSync(srcPath + 'bundle-clean.js', 'utf8')).toBe(minSrc.substr(0, mapPos))
 
     validate(minSrc)
