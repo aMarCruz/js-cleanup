@@ -1,0 +1,62 @@
+{
+  "name": "js-cleanup",
+  "version": "0.9.0",
+  "description": "Smart comment and whitespace cleaner for JavaScript-like files.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "engines": {
+    "node": ">=6.14"
+  },
+  "scripts": {
+    "lint": "tslint *.ts && tslint -p . && eslint --ext js test",
+    "test": "nyc mocha",
+    "pretest": "yarn build",
+    "build": "rollup -c",
+    "clean": "rimraf ./.nyc_output/** ./coverage/** ./dist/**",
+    "coverage": "nyc report -r=lcov",
+    "prepublish": "npm run clean && npm run lint && npm run test"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "es6",
+    "clean",
+    "cleanup",
+    "source",
+    "comments",
+    "remover",
+    "removal"
+  ],
+  "author": "aMarCruz <amarcruzbox-git@yahoo.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/aMarCruz/rmcomms",
+  "bugs": "https://github.com/aMarCruz/rmcomms/issues",
+  "repository": {
+    "url": "https://github.com/aMarCruz/rmcomms",
+    "type": "git"
+  },
+  "dependencies": {
+    "magic-string": "^0.25.1",
+    "perf-regexes": "^1.0.1",
+    "skip-regex": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/expect": "~1.20.03",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "eslint": "^5.11.0",
+    "expect": "~1.20.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.68.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "sourcemap-validator": "^1.1.0",
+    "tslib": "^1.9.3",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  }
+}

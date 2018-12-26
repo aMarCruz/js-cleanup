@@ -1,0 +1,20 @@
+# dist
+dist/
+
+# Common git and npm ignored folders and files
+.nyc_output
+.rpt2_cache
+*.pid
+*.seed
+**/*.bak
+**/*.lcov
+**/*.log
+**/*.tgz
+~*
+cov-int
+coverage
+lib-cov
+logs
+node_modules
+package-lock.json
+pids

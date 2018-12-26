@@ -1,0 +1,7 @@
+/.nyc_output
+/dist
+/coverage
+/test/expected
+/test/fixtures
+/test/maps
+**/*.md
