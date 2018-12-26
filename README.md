@@ -2,9 +2,10 @@
 
 [![npm Version][npm-badge]][npm-url]
 [![License][license-badge]][license-url]
-[![Build Status][build-badge]][build-url]
-[![Maintainability][climate-badge]][climate-url]
+[![Travis][travis-badge]][travis-url]
+[![AppVeyor][appveyor-badge]][appveyor-url]
 [![Coverage][cover-badge]][cover-url]
+[![Maintainability][climate-badge]][climate-url]
 
 Smart comment and whitespace cleaner for JavaScript-like files.
 
@@ -139,8 +140,10 @@ The [MIT License](LICENCE) (MIT)
 [npm-url]:        https://www.npmjs.com/package/js-cleanup
 [license-badge]:  https://badgen.net/github/license/aMarCruz/js-cleanup
 [license-url]:    https://github.com/aMarCruz/js-cleanup/blob/master/LICENSE
-[build-badge]:    https://travis-ci.org/aMarCruz/js-cleanup.svg?branch=master
-[build-url]:      https://travis-ci.org/aMarCruz/js-cleanup
+[travis-badge]:   https://travis-ci.org/aMarCruz/js-cleanup.svg?branch=master
+[travis-url]:     https://travis-ci.org/aMarCruz/js-cleanup
+[appveyor-badge]: https://ci.appveyor.com/api/projects/status/mfdroxmtubqe9fks/branch/master?svg=true
+[appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/js-cleanup
 [climate-badge]:  https://api.codeclimate.com/v1/badges/0618a24189f355bd508d/maintainability
 [climate-url]:    https://codeclimate.com/github/aMarCruz/js-cleanup/maintainability
 [cover-badge]:    https://codecov.io/gh/aMarCruz/js-cleanup/branch/master/graph/badge.svg
