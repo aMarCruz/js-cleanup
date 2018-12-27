@@ -2,7 +2,7 @@
 
 version: "{build}"
 
-clone_depth: 10
+clone_depth: 3
 
 init:
   - git config --global core.autocrlf false

@@ -11,14 +11,14 @@ Smart comment and whitespace cleaner for JavaScript-like files.
 
 With js-cleanup you have:
 
-- Removal of JavaScript comments through powerful filters (configurable).
+- Compaction of empty lines within multiline comments and/or out of them.
 - Normalization of line endings to Unix, Mac, or Windows.
-- Empty lines compactation (configurable).
-- Removal of trailing whitespace, preserving ES6 Template Literal Strings.
+- Removal of JavaScript comments through powerful, configurable filters.
+- Removal of trailing whitespace of each line.
 - TypeScript definitions.
 - Sourcemap support.
 
-js-cleanup is not locked to a particular JavaScript dialect and must work in any JS-like file: TypeScript, ES2019, etc, but it is more of a post-processor, so it should run at a later stage of your toolchain, after any preprocessor or transpiler.
+Although js-cleanup is not locked to a particular JavaScript dialect and can handle any JS-like file: TypeScript, Flow, React, ES9, etc, it is mainly a postprocessor, so it should be runned in a later stage of your toolchain, after any preprocessor or transpiler.
 
 js-cleanup requires node v6.14 or above.
 
@@ -79,8 +79,8 @@ Name               | Default   | Description
 ------------------ | --------- | ------------
 comments           | 'some'    | Filter or array of filters that determinates which comments should be preserved.<br>Use "all" to keep all, or "none" to remove all the comments.
 compactComments    | true      | Should js-cleanup also compact whitespace and blank lines in the preserved multiline comments?<br>Line-ending normalization is always done.
-maxEmptyLines      | 0         | Maximum successive empty lines to preserve in the output.<br>Use -1 to preserve all the lines
-lineEndings        | 'unix'    | Line-ending type for normalization (always done).
+maxEmptyLines      | 0         | Maximum successive empty lines to preserve in the output.<br>Use a positive value, or -1 to preserve all the lines
+lineEndings        | 'unix'    | Type of Line-ending for normalization: "unix", "mac", "win".
 sourcemap          | true      | Should js-cleanup generate a sourcemap?
 _sourcemapOptions_ |           |
 includeContent     | false     | Include the original source text in the sourcemap?

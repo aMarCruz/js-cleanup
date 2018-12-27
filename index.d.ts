@@ -25,17 +25,19 @@ declare namespace cleanup {
      */
     compactComments?: boolean
     /**
-     * Type of line-endings for normalization.
+     * Type of Line-ending for normalization.
      * @default 'unix'
      */
     lineEndings?: 'unix' | 'mac' | 'win'
     /**
      * Maximum successive empty lines to preserve in the output.
+     *
+     * Use a positive value, or `-1` to keep all the lines.
      * @default 0
      */
     maxEmptyLines?: number
     /**
-     * Should generate sourcemap?
+     * Should generate a sourcemap?
      * @default true
      */
     sourcemap?: boolean
@@ -43,11 +45,20 @@ declare namespace cleanup {
      * Sourcemap options
      */
     sourcemapOptions?: {
-      /** @default false */
+      /**
+       * Include the original source text in the sourcemap?
+       * @default false
+       */
       includeContent?: boolean
-      /** @default false */
+      /**
+       * Inline the sourcemap in the processed text?
+       * @default false
+       */
       inlineMap?: boolean
-      /** @default true */
+      /**
+       * Should a hi-res sourcemap be generated?
+       * @default true
+       */
       hires?: boolean
     }
   }
