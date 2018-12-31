@@ -2,6 +2,10 @@
 
 ## \[Unreleased]
 
+### Added
+
+- Codacy test and badge.
+
 ### Changed
 
 - Use shields.io instead badgen.net for badges.

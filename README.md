@@ -4,7 +4,8 @@
 [![npm Version][npm-badge]][npm-url]
 [![Travis][travis-badge]][travis-url]
 [![AppVeyor][appveyor-badge]][appveyor-url]
-[![Coverage][cover-badge]][cover-url]
+[![Coverage][coverage-badge]][coverage-url]
+[![Code Quality][codacy-badge]][codacy-url]
 [![Maintainability][climate-badge]][climate-url]
 
 Smart comment and whitespace cleaner for JavaScript-like files.
@@ -24,7 +25,7 @@ js-cleanup requires node v6.14 or above.
 
 **Why not Uglify?**
 
-Uglify is a excelent *minifier* but you have little control over the results, while with js-cleanup your coding style remains intact and the removal of comments is strictly under your control.
+Uglify is a excelent _minifier_ but you have little control over the results, while with js-cleanup your coding style remains intact and the removal of comments is strictly under your control.
 
 ## Install
 
@@ -76,7 +77,7 @@ Type definition:
 ```
 
 Name               | Default  | Description
--------------------| ---------| ------------
+------------------ | -------- | ------------
 comments           | 'some'   | Filter or array of filters that determinates which comments should be preserved.<br>Use "all" to keep all, or "none" to remove all the comments.
 compactComments    | true     | Should js-cleanup also compact whitespace and blank lines in the preserved multiline comments?<br>Line-ending normalization is always done.
 maxEmptyLines      | 0        | Maximum successive empty lines to preserve in the output.<br>Use a positive value, or -1 to preserve all the lines
@@ -145,8 +146,10 @@ The [MIT License][license-url] (MIT)
 [appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/js-cleanup
 [travis-badge]:   https://img.shields.io/travis/aMarCruz/js-cleanup/master.svg?label=travis
 [travis-url]:     https://travis-ci.org/aMarCruz/js-cleanup
-[cover-badge]:    https://img.shields.io/codecov/c/github/aMarCruz/js-cleanup.svg
-[cover-url]:      https://codecov.io/gh/aMarCruz/js-cleanup
+[coverage-badge]: https://img.shields.io/codecov/c/github/aMarCruz/js-cleanup.svg
+[coverage-url]:   https://codecov.io/gh/aMarCruz/js-cleanup
+[codacy-badge]:   https://img.shields.io/codacy/grade/1534ad8a654346b78ccb827dabe0bfa8/master.svg
+[codacy-url]:     https://www.codacy.com/app/aMarCruz/js-cleanup?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aMarCruz/js-cleanup&amp;utm_campaign=Badge_Grade
 [climate-badge]:  https://img.shields.io/codeclimate/maintainability/aMarCruz/js-cleanup.svg
 [climate-url]:    https://codeclimate.com/github/aMarCruz/js-cleanup/maintainability
 [kofi-url]:       https://ko-fi.com/C0C7LF7I

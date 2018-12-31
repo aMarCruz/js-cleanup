@@ -71,8 +71,6 @@ describe('Sourcemap support', function () {
     const file = srcPath + 'bundle-src.js'
     let code = fs.readFileSync(file, 'utf8')
     let result = cleanup(code, file, { sourcemap: false })
-
-    expect(result).toBeAn(Object).toBeTruthy()
     expect(result).toExcludeKey('map')
     expect(result.code).toNotBe(code)
 
