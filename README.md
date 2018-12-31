@@ -136,7 +136,9 @@ Thanks for your support!
 
 ## License
 
-The [MIT License][license-url] (MIT)
+The [MIT][license-url] License
+
+&copy; 2018-2019 Alberto Martínez
 
 [license-badge]:  https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]:    https://github.com/aMarCruz/js-cleanup/blob/master/LICENSE

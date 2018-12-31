@@ -9,6 +9,7 @@
 ### Changed
 
 - Use shields.io instead badgen.net for badges.
+- Update year of license.
 
 ### Fixed
 
