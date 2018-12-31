@@ -1,7 +1,7 @@
 # js-cleanup
 
-[![npm Version][npm-badge]][npm-url]
 [![License][license-badge]][license-url]
+[![npm Version][npm-badge]][npm-url]
 [![Travis][travis-badge]][travis-url]
 [![AppVeyor][appveyor-badge]][appveyor-url]
 [![Coverage][cover-badge]][cover-url]
@@ -51,10 +51,10 @@ The result is a plain JS object of this type:
 }
 ```
 
-Name | Description
----- | ------
-code | The processed code.
-map  | A raw sourcemap object, or `null` if the text did not change.<br>Undefined if `sourcemap:false`.
+Name  | Description
+------|-------------
+code  | The processed code.
+map   | A raw sourcemap object, or `null` if the text did not change.<br>Undefined if `sourcemap:false`.
 
 ### Options
 
@@ -64,8 +64,8 @@ Type definition:
 {
   comments?: string | RegExp,
   compactComments?: boolean,
-  maxEmptyLines?: 0,           // use -1 to preserve all the lines
-  lineEndings?: `unix`,      // 'mac' | 'unix' | 'win'
+  maxEmptyLines?: number,    // use -1 to preserve all the lines
+  lineEndings?: string,      // 'mac' | 'unix' | 'win'
   sourcemap?: boolean,
   sourcemapOptions: {
     includeContent?: boolean,
@@ -75,17 +75,17 @@ Type definition:
 }
 ```
 
-Name               | Default   | Description
------------------- | --------- | ------------
-comments           | 'some'    | Filter or array of filters that determinates which comments should be preserved.<br>Use "all" to keep all, or "none" to remove all the comments.
-compactComments    | true      | Should js-cleanup also compact whitespace and blank lines in the preserved multiline comments?<br>Line-ending normalization is always done.
-maxEmptyLines      | 0         | Maximum successive empty lines to preserve in the output.<br>Use a positive value, or -1 to preserve all the lines
-lineEndings        | 'unix'    | Type of Line-ending for normalization: "unix", "mac", "win".
-sourcemap          | true      | Should js-cleanup generate a sourcemap?
-_sourcemapOptions_ |           |
-includeContent     | false     | Include the original source text in the sourcemap?
-inlineMap          | false     | Inline the sourcemap in the processed text?
-hires              | true      | Should a hi-res sourcemap be generated?
+Name               | Default  | Description
+-------------------| ---------| ------------
+comments           | 'some'   | Filter or array of filters that determinates which comments should be preserved.<br>Use "all" to keep all, or "none" to remove all the comments.
+compactComments    | true     | Should js-cleanup also compact whitespace and blank lines in the preserved multiline comments?<br>Line-ending normalization is always done.
+maxEmptyLines      | 0        | Maximum successive empty lines to preserve in the output.<br>Use a positive value, or -1 to preserve all the lines
+lineEndings        | 'unix'   | Type of Line-ending for normalization: "unix", "mac", "win".
+sourcemap          | true     | Should js-cleanup generate a sourcemap?
+_sourcemapOptions_ | -        |
+includeContent     | false    | Include the original source text in the sourcemap?
+inlineMap          | false    | Inline the sourcemap in the processed text?
+hires              | true     | Should a hi-res sourcemap be generated?
 
 _**Note:**<br>If you want to keep JSDoc comments, you should also set `compactComments: false`.<br>Since the JSDoc presentation depends on empty lines, these should be controlled by you._
 
@@ -135,20 +135,18 @@ Thanks for your support!
 
 ## License
 
-The [MIT License](LICENCE) (MIT)
+The [MIT License][license-url] (MIT)
 
-[npm-badge]:      https://badgen.net/npm/v/js-cleanup
-[npm-url]:        https://www.npmjs.com/package/js-cleanup
-[license-badge]:  https://badgen.net/github/license/aMarCruz/js-cleanup
+[license-badge]:  https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]:    https://github.com/aMarCruz/js-cleanup/blob/master/LICENSE
-[travis-badge]:   https://travis-ci.org/aMarCruz/js-cleanup.svg?branch=master
-[travis-url]:     https://travis-ci.org/aMarCruz/js-cleanup
-[appveyor-badge]: https://ci.appveyor.com/api/projects/status/mfdroxmtubqe9fks/branch/master?svg=true
+[npm-badge]:      https://img.shields.io/npm/v/js-cleanup.svg
+[npm-url]:        https://www.npmjs.com/package/js-cleanup
+[appveyor-badge]: https://img.shields.io/appveyor/ci/aMarCruz/js-cleanup/master.svg?label=appveyor
 [appveyor-url]:   https://ci.appveyor.com/project/aMarCruz/js-cleanup
-[climate-badge]:  https://api.codeclimate.com/v1/badges/0618a24189f355bd508d/maintainability
-[climate-url]:    https://codeclimate.com/github/aMarCruz/js-cleanup/maintainability
-[cover-badge]:    https://codecov.io/gh/aMarCruz/js-cleanup/branch/master/graph/badge.svg
+[travis-badge]:   https://img.shields.io/travis/aMarCruz/js-cleanup/master.svg?label=travis
+[travis-url]:     https://travis-ci.org/aMarCruz/js-cleanup
+[cover-badge]:    https://img.shields.io/codecov/c/github/aMarCruz/js-cleanup.svg
 [cover-url]:      https://codecov.io/gh/aMarCruz/js-cleanup
-[size-badge]:     https://badgen.net/bundlephobia/min/js-cleanup
-[size-url]:       https://bundlephobia.com/result?p=js-cleanup
+[climate-badge]:  https://img.shields.io/codeclimate/maintainability/aMarCruz/js-cleanup.svg
+[climate-url]:    https://codeclimate.com/github/aMarCruz/js-cleanup/maintainability
 [kofi-url]:       https://ko-fi.com/C0C7LF7I

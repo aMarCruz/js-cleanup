@@ -1,5 +1,15 @@
 # Changes of js-cleanup
 
+## \[Unreleased]
+
+### Changed
+
+- Use shields.io instead badgen.net for badges.
+
+### Fixed
+
+- Linting issues.
+
 ## \[1.0.0] - 2018-12-26
 
 ### Added
