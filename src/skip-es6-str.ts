@@ -35,9 +35,14 @@ const skipTL = (buffer: string, start: number, stack: string[]) => {
       When the calling loop finds a closing brace and see the backtick,
       it will restore the ES6 TL parsing mode.
     */
-    if (c === '$' && buffer[pos] === '{') {
-      stack.push(ES6_BQ)
-      return pos + 1
+    if (c === '$') {
+      if (buffer[pos] === '{') {
+        stack.push(ES6_BQ)
+        return pos + 1
+      }
+      if (buffer[pos] === '`') {
+        return pos + 1
+      }
     }
 
     // This is an escaped char, skip it

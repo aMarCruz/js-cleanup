@@ -1,6 +1,6 @@
 # Changes of js-cleanup
 
-## \[Unreleased]
+## \[1.0.1] - 2019-01-18
 
 ### Added
 
@@ -14,6 +14,7 @@
 ### Fixed
 
 - Linting issues.
+- Issue with ES6 TL reported in rollup-plugin-cleanup #15 by @stotter
 
 ## \[1.0.0] - 2018-12-26
 

@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint-disable no-template-curly-in-string */
 'use strict'
 
 const testStr = require('./utils/make-tester')({
@@ -21,8 +22,8 @@ describe('Modern ES support', function () {
   })
 
   it('must compact only the expressions in ES6 TL', function () {
-    const es6str1 = '`\n  \nX\n X\n ${ \n x \n } \n `' // eslint-disable-line
-    const es6str2 = '`\n  \nX\n X\n ${\n x\n } \n `'   // eslint-disable-line
+    const es6str1 = '`\n  \nX\n X\n ${ \n x \n } \n `'
+    const es6str2 = '`\n  \nX\n X\n ${\n x\n } \n `'
     const wrappedStr = '\n\n\n' + es6str1
 
     testStr(es6str1, es6str2, 0)
@@ -33,8 +34,8 @@ describe('Modern ES support', function () {
   })
 
   it('must compact nested expressions in ES6 TL', function () {
-    const es6str1 = '`\n ${ \n x + `${ \n0 \n}` \n } `' // eslint-disable-line
-    const es6str2 = '`\n ${\n x + `${\n0\n}`\n } `'   // eslint-disable-line
+    const es6str1 = '`\n ${ \n x + `${ \n0 \n}` \n } `'
+    const es6str2 = '`\n ${\n x + `${\n0\n}`\n } `'
     const wrappedStr = '\n\n\n' + es6str1
 
     testStr(es6str1, es6str2, 0)
@@ -45,8 +46,8 @@ describe('Modern ES support', function () {
   })
 
   it('must ignore all inside ES6 TL fixed part', function () {
-    const es6str1 = '`\n{{} ${ x }{`' // eslint-disable-line
-    const es6str2 = '`} ${ x }}`'   // eslint-disable-line
+    const es6str1 = '`\n{{} ${ x }{`'
+    const es6str2 = '`} ${ x }}`'
 
     testStr(es6str1, es6str1, 0)
     testStr(es6str1 + '\n\n', es6str1 + '\n', 0)
@@ -55,9 +56,9 @@ describe('Modern ES support', function () {
   })
 
   it('must ignore escaped backtick and brackets in ES6 TL', function () {
-    const es6str1 = '`\\${ \nx }`' // eslint-disable-line
-    const es6str2 = '`\\` $\\{ \n}\\``'   // eslint-disable-line
-    const es6str3 = '`$\\{ \n\\}`'   // eslint-disable-line
+    const es6str1 = '`\\${ \nx }`'
+    const es6str2 = '`\\` $\\{ \n}\\``'
+    const es6str3 = '`$\\{ \n\\}`'
 
     testStr(es6str1, es6str1, 0)
     testStr(es6str1 + '\n\n', es6str1 + '\n', 0)
@@ -86,4 +87,18 @@ describe('Modern ES support', function () {
     testStr(source, expected, { comments: 'none' })
   })
 
+  it('rollup-plugin-cleanup #15 fix', function () {
+    const es6str = [
+      'const s = `${v}$`',
+      'const s = `$${v}$`',
+      'const s = `${v}$$`',
+      'const s = `\\$`',
+      'const s = `$0`',
+      'const s = `$$`',
+      'const s = `$`',
+    ]
+    es6str.forEach((str) => {
+      testStr(str, str)
+    })
+  })
 })
