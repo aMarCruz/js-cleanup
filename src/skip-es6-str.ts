@@ -30,23 +30,18 @@ const skipTL = (buffer: string, start: number, stack: string[]) => {
       return pos                          // found the end of this TL
     }
 
-    /*
-      If a sub-expression is found, push a backtick in the stack.
-      When the calling loop finds a closing brace and see the backtick,
-      it will restore the ES6 TL parsing mode.
-    */
-    if (c === '$') {
-      if (buffer[pos] === '{') {
-        stack.push(ES6_BQ)
-        return pos + 1
-      }
-      if (buffer[pos] === '`') {
-        return pos + 1
-      }
-    }
+    if (c === '\\') {
+      re.lastIndex = pos + 1              // Skip this escaped char
 
-    // This is an escaped char, skip it
-    re.lastIndex = pos + 1
+    } else if (buffer[pos] === '{') {
+      /*
+        In a sub-expression, push a backtick in the stack.
+        When the calling loop finds a closing brace and see the backtick,
+        it will restore the ES6 TL parsing mode.
+      */
+      stack.push(ES6_BQ)
+      return pos + 1
+    }
   }
 
   throw makeError(new Error('Unclosed ES6 Template Literal.'), start)
