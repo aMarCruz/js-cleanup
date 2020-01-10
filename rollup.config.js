@@ -1,8 +1,8 @@
 /*
   Rollup configuration.
 */
-const nodeResolve = require('rollup-plugin-node-resolve')
-const typescript = require('rollup-plugin-typescript')
+const nodeResolve = require('@rollup/plugin-node-resolve')
+const typescript = require('@rollup/plugin-typescript')
 const pkg = require('./package.json')
 
 const external = Object.keys(pkg.dependencies)

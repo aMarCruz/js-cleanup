@@ -22,10 +22,7 @@
     /* Module Resolution Options */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "plugins": [
-      { "name": "typescript-tslint-plugin" }
-    ]
+    "moduleResolution": "node"
   },
   "include": [
     "index.d.ts",
