@@ -3,7 +3,9 @@ version: "2"
 plugins:
   eslint:
     enabled: true
-    channel: "eslint-5"
+    channel: "eslint-7"
+  markdownlint:
+    enabled: true
 
 checks:
   method-complexity:

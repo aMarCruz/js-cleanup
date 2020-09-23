@@ -1,5 +1,18 @@
 # Changes of js-cleanup
 
+## \[1.2.0] - 2020-09-22
+
+### Changed
+
+- Fix all the lint errors in src and test.
+- Emit correct typings for each bundle.
+- Revised npm scripts, using "prepare" instead "prepublish".
+- Simplify eslintrc using [eslint-config-standardize](https://www.npmjs.com/package/eslint-config-standardize) + [eslint-plugin-prettierx](https://www.npmjs.com/package/eslint-plugin-prettierx)
+- Simplify tsconfig.json.
+- Sync CI configuration with new NodeJS requirements.
+- Require NodeJS 10.12 or 12.0 and above.
+- Update dependencies / devDependencies.
+
 ## \[1.0.1] - 2019-01-18
 
 ### Added

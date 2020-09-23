@@ -4,11 +4,13 @@ import safeRegex from './safe-regex'
  * Source to match consecutive whitespace that ends in a line-ending of any
  * type. The whitespace can include other line-endings.
  */
+// eslint-disable-next-line unicorn/better-regex
 const sAllLines = safeRegex(/\s*(?:@LE)/).source
 
 /**
  * Matches one line-endings and its leading characters.
  */
+// eslint-disable-next-line unicorn/better-regex
 const reEachLine = safeRegex(/.*(?:@LE)/, 'g')
 
 /**
@@ -21,7 +23,7 @@ const reEachLine = safeRegex(/.*(?:@LE)/, 'g')
  * @param first This is the first block
  */
 const packLines = (ctx: Context, str: string, first: boolean) => {
-
+  //
   // First case, no empty lines
   if (!ctx.empties) {
     return first ? '' : ctx.eolChar
@@ -51,7 +53,6 @@ const packLines = (ctx: Context, str: string, first: boolean) => {
  * @param end Ending of the region
  */
 const squashRegion = (ctx: Context, mm: RegExpExecArray, end: number) => {
-
   // Get the start position and content of the region to squash.
   const start = mm.index
   const oldStr = mm[0]
@@ -80,19 +81,17 @@ const squashRegion = (ctx: Context, mm: RegExpExecArray, end: number) => {
  * @param end Ending of the region
  */
 const trimLines = function (ctx: Context, end: number) {
-
   if (ctx.start >= end) {
     return
   }
 
   const buffer = ctx.buff
-  const re = RegExp(sAllLines, 'g')
+  const re = new RegExp(sAllLines, 'g')
 
   re.lastIndex = ctx.start
   let mm = re.exec(buffer)
 
   while (mm) {
-
     if (mm.index >= end) {
       ctx.start = end
       return

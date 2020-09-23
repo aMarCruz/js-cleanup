@@ -4,16 +4,8 @@
 const testLines = require('./utils/make-tester')({ sourcemap: false })
 
 describe('Lines', function () {
-
   it('by default removes all the empty lines and normalize to unix', function () {
-    const source = [
-      '',
-      'abc ',
-      'x\t',
-      '\r\ny \r',
-      '\n\n\r\t',
-      'z ',
-    ]
+    const source = ['', 'abc ', 'x\t', '\r\ny \r', '\n\n\r\t', 'z ']
     testLines(source, 'abc\nx\ny\nz')
   })
 
@@ -22,7 +14,7 @@ describe('Lines', function () {
     testLines('  X\n\n X', '  X\n X')
   })
 
-  it('must respect the last line-ending, if there\'s one', function () {
+  it("must respect the last line-ending, if there's one", function () {
     testLines('\nX\n\n\n', 'X\n')
     testLines('X\n ', 'X\n')
     testLines('X\n', 'X\n')
@@ -81,5 +73,4 @@ describe('Lines', function () {
     testLines(str, '\n\n', 2)
     testLines(str, '\n\n\n', -1)
   })
-
 })

@@ -8,9 +8,9 @@ import makeError from './make-error'
  * @param index Start of the string
  */
 const skipQuotes = function (ctx: Context, index: number) {
-
   const buffer = ctx.buff
   const re = buffer[index] === '"' ? JS_DQSTR : JS_SQSTR
+
   re.lastIndex = index
 
   if (!re.exec(buffer)) {

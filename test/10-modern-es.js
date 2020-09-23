@@ -8,7 +8,6 @@ const testStr = require('./utils/make-tester')({
 })
 
 describe('Modern ES support', function () {
-
   it('handles ES7', function () {
     const fiveLines = '\n\n\n\n\n'
     const es6str = '`' + fiveLines + '`'
@@ -97,7 +96,7 @@ describe('Modern ES support', function () {
       'const s = `$$`',
       'const s = `$`',
     ]
-    es6str.forEach((str) => {
+    es6str.forEach(str => {
       testStr(str, str)
     })
   })

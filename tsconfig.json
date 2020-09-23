@@ -1,32 +1,23 @@
 {
+  /* Visit https://aka.ms/tsconfig.json to read more about this file */
   "compilerOptions": {
-    /* Basic Options */
-    "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "sourceMap": true,
-    "target": "es6",
-    /* Strict */
-    "alwaysStrict": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strict": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    /* Additional Checks */
+    "allowJs": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    /* Module Resolution Options */
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node"
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "stripInternal": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es2018"
   },
   "include": [
-    "index.d.ts",
-    "src"
+    "src", "cleanup.ts"
   ],
   "exclude": [
     "node_modules",

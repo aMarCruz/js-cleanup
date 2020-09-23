@@ -1,4 +1,4 @@
-export = cleanup
+export default cleanup
 export as namespace cleanup
 
 /**

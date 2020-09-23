@@ -15,9 +15,9 @@ const ES6_BQ = '`'
  * @returns The end of the string (-1 if not found).
  */
 const skipTL = (buffer: string, start: number, stack: string[]) => {
-
+  //
   // Only three characters are of interest to this function
-  const re = /[`$\\]/g
+  const re = /[$\\`]/g
 
   // `start` points to the a backtick inside `code`
   re.lastIndex = start + 1
@@ -27,12 +27,12 @@ const skipTL = (buffer: string, start: number, stack: string[]) => {
     const c = buffer[pos - 1]
 
     if (c === ES6_BQ) {
-      return pos                          // found the end of this TL
+      return pos // found the end of this TL
     }
 
     if (c === '\\') {
-      re.lastIndex = pos + 1              // Skip this escaped char
-
+      re.lastIndex = pos + 1 // Skip this escaped char
+      //
     } else if (buffer[pos] === '{') {
       /*
         In a sub-expression, push a backtick in the stack.
@@ -57,7 +57,7 @@ const skipTL = (buffer: string, start: number, stack: string[]) => {
  * @param start Start of the ES6 TL
  */
 const skipES6Str = function (ctx: Context, start: number) {
-
+  //
   trimLines(ctx, start)
 
   ctx.start = skipTL(ctx.buff, start, ctx.stack)

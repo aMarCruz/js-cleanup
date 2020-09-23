@@ -92,7 +92,7 @@ const rmComment = (ctx: Context, start: number, end: number) => {
  * @param end Ending position of the comment
  */
 const normalize = (ctx: Context, start: number, end: number) => {
-
+  //
   // Trim the previous block up to the beginning of this comment
   trimLines(ctx, start)
 
@@ -122,7 +122,7 @@ const reCmnt = {
  * @param ch Type of this comment, either '*' or '/'
  */
 const handleComment = function (ctx: Context, start: number, ch: '*' | '/') {
-
+  //
   const re = reCmnt[ch]
   re.lastIndex = start
 
@@ -135,17 +135,15 @@ const handleComment = function (ctx: Context, start: number, ch: '*' | '/') {
   const end = re.lastIndex
 
   if (ctx.filter(mm)) {
-
     // This comment must be removed or replaced by spaces.
     rmComment(ctx, start, end)
-
+    //
   } else if (!ctx.compact && ch === '*') {
-
     // Preserve whitespace of this comment, only normalize lines.
     normalize(ctx, start, end)
   }
 
-  return end  // trimLines will preserve and compact this comment
+  return end // trimLines will preserve and compact this comment
 }
 
 export default handleComment

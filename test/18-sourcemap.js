@@ -1,17 +1,15 @@
-// @ts-check
+// @ts-nocheck
 'use strict'
 
-const cleanup   = require('..')
-const expect    = require('expect')
-const fs        = require('fs')
-const validate  = require('sourcemap-validator')
+const fs = require('fs')
+const expect = require('expect')
+const validate = require('sourcemap-validator')
+const cleanup = require('..')
 
 describe('Sourcemap support', function () {
-
   const srcPath = 'test/maps/'
 
   it('must generate a valid sourcemap object', function () {
-
     const file = srcPath + 'bundle-src.js'
     const code = fs.readFileSync(file, 'utf8')
     const opts = {}
@@ -43,18 +41,20 @@ describe('Sourcemap support', function () {
       comments: ['none'],
       sourcemapOptions: { includeContent: true, inlineMap: true },
     })
+
     expect(result).toBeAn(Object).toBeTruthy()
     expect(result).toExcludeKey('map')
-    expect(result.code).toNotBe(code)
 
-    // current version of sourcemap-validator does not supports charset
-    const minSrc = result.code.replace(';charset=utf-8', '')
-    const mapPos = minSrc.indexOf('\n//# sourceMappingURL=data:application/json;')
+    const mapSrc = result.code
+    const mapPos = mapSrc.indexOf('\n//# sourceMappingURL=data:application/json;')
 
-    expect(mapPos).toBeGreaterThan(0, 'Expected an inlined sourcemap but it is not there.')
-    expect(fs.readFileSync(srcPath + 'bundle-clean.js', 'utf8')).toBe(minSrc.substr(0, mapPos))
+    expect(mapSrc).toNotBe(code)
+    expect(mapPos).toBeGreaterThan(0, 'Expected an inlined sourcemap but is not there.')
+    expect(fs.readFileSync(srcPath + 'bundle-clean.js', 'utf8')).toBe(
+      mapSrc.substr(0, mapPos)
+    )
 
-    validate(minSrc)
+    validate(mapSrc)
   })
 
   it('must add `map:null` if the code did not change', function () {
@@ -80,5 +80,4 @@ describe('Sourcemap support', function () {
     expect(result).toExcludeKey('map')
     expect(result.code).toBe(code)
   })
-
 })

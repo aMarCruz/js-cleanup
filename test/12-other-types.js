@@ -4,7 +4,6 @@
 const testStr = require('./utils/make-tester')({ sourcemap: false })
 
 describe('TypeScript', function () {
-
   it('"ts" must handle TypeScript files', function () {
     const source = [
       '/*@ts-nocheck*/',
@@ -34,11 +33,11 @@ describe('TypeScript', function () {
   it('"ts" must preserve Triple-Slash directives.', function () {
     const source = [
       '/// <reference path="foo.bar" />',
-      '/// <reference types=\'node\' />',
-      '/// <reference><reference/>',  // no ts
-      '/** @module FooMain */',       // no tS
+      "/// <reference types='node' />",
+      '/// <reference><reference/>', // no ts
+      '/** @module FooMain */', // no tS
       '///<amd-module />',
-      '/// The main class',   // no ts
+      '/// The main class', // no ts
       '/* @jsx preact.h */',
       'class Main {',
       '  constructor() {}',
@@ -46,7 +45,7 @@ describe('TypeScript', function () {
     ]
     const expected = [
       '/// <reference path="foo.bar" />',
-      '/// <reference types=\'node\' />',
+      "/// <reference types='node' />",
       '///<amd-module />',
       '/* @jsx preact.h */',
       'class Main {',
@@ -60,7 +59,7 @@ describe('TypeScript', function () {
     const source = [
       '//@ts-check',
       '/// <reference path="foo.bar" />',
-      '/// <reference types=\'node\' />',
+      "/// <reference types='node' />",
       '///<amd-module />',
       '/* @jsx preact.h */',
       'class Main {',
@@ -70,7 +69,7 @@ describe('TypeScript', function () {
     ]
     const expected = [
       '/// <reference path="foo.bar" />',
-      '/// <reference types=\'node\' />',
+      "/// <reference types='node' />",
       '///<amd-module />',
       'class Main {',
       '  constructor() {}',
@@ -78,11 +77,9 @@ describe('TypeScript', function () {
     ]
     testStr(source, expected, { comments: 'ts3s' })
   })
-
 })
 
 describe('Flow', function () {
-
   /*
     @flow and $Flow<any> can be contained in single or multiline comments.
   */
@@ -91,7 +88,7 @@ describe('Flow', function () {
       '//@flow',
       '/*@flow*/',
       '/*\n@flow\n*/',
-      '//main class',         // remove
+      '//main class', // remove
       '// $FlowFixMe',
       '/*',
       ' $FlowIgnore*/',
@@ -127,8 +124,8 @@ describe('Flow', function () {
       ' type A = {};',
       '*/',
       '/* :: type B={}*/',
-      '/*\ntype B={}\n*/',    // remove, not valid
-      '//main class',         // remove
+      '/*\ntype B={}\n*/', // remove, not valid
+      '//main class', // remove
       'class Main {',
       '  //*flow-include pop:number*/', // remove, not valid
       '  /*flow-include pop:string */',
@@ -160,7 +157,7 @@ describe('Flow', function () {
   it('"flow" must also preserve flowlint directives', function () {
     const source = [
       '/* @flow */',
-      '//main class',   // remove
+      '//main class', // remove
       '/*\fflowlint\nx*/',
       '//flowlint x',
       'class Main {',
@@ -168,7 +165,7 @@ describe('Flow', function () {
       '  // flowlint-next-line x*/',
       '  /*\nflowlint-next-line x*/',
       '  constructor(/*: string*/s) {} /*flowlint-next-line x\n*/',
-      '  /*flowlint-next-line*/',   //invalid
+      '  /*flowlint-next-line*/', // invalid
       '}',
     ]
     const expected = [
@@ -184,5 +181,4 @@ describe('Flow', function () {
     ]
     testStr(source, expected, { comments: 'flow' })
   })
-
 })

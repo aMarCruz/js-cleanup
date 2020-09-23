@@ -4,7 +4,6 @@
 const testStr = require('./utils/make-tester')({ sourcemap: false })
 
 describe('In strings', function () {
-
   it('must remove comments between strings', function () {
     testStr('"a"+/*x*/"b"', '"a"+"b"')
     testStr('"a"+ \n/*x*/"b"', '"a"+\n"b"')
@@ -80,5 +79,4 @@ describe('In strings', function () {
     str = '"\\\n//x"'
     testStr(str, str)
   })
-
 })

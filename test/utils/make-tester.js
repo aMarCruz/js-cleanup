@@ -1,5 +1,5 @@
-const cleanup = require('../..')
 const expect = require('expect')
+const cleanup = require('../..')
 
 /**
  * Make a tester for strings

@@ -4,13 +4,8 @@
 const testStr = require('./utils/make-tester')({ sourcemap: false })
 
 describe('The default filter', function () {
-
   it('must preserve comments containing "@license"', function () {
-    const str = [
-      '/* @license MIT */',
-      '//@license MIT',
-      '/*\n @license MIT\n*/',
-    ]
+    const str = ['/* @license MIT */', '//@license MIT', '/*\n @license MIT\n*/']
     testStr(str, str)
     testStr(str + '\n//a', str + '\n')
   })
@@ -26,17 +21,11 @@ describe('The default filter', function () {
     testStr(str, str)
     testStr(str + '\n//a', str)
   })
-
 })
 
 describe('Special filters', function () {
-
   it('"all" must preserve all comments', function () {
-    const source = [
-      '/*x*/',
-      'foo // x',
-      '/**///z\n\n\n\n',
-    ].join('\n')
+    const source = ['/*x*/', 'foo // x', '/**///z\n\n\n\n'].join('\n')
 
     testStr(source, source.trim() + '\n', { comments: 'all' })
     testStr(source, source.trim() + '\n\n\n', { comments: 'all', maxEmptyLines: 2 })
@@ -56,22 +45,18 @@ describe('Special filters', function () {
     testStr(source, '\n\nfoo\n\n\n', { comments: 'none', maxEmptyLines: 2 })
     testStr(source, '\n\nfoo\n\n\n\n\n\n', { comments: 'none', maxEmptyLines: -1 })
   })
-
 })
 
-describe('Predefined filters', function () { // eslint-disable-line max-lines-per-function
-
+// eslint-disable-next-line max-lines-per-function
+describe('Predefined filters', function () {
   it('"license" must preserve only comments with "@license"', function () {
-    const source = [
-      '/** @license MIT */',
-      '//x',
-      'foo',
-      '//!x',
-      '/* @preserve *///x\n\n\n',
-    ]
+    const source = ['/** @license MIT */', '//x', 'foo', '//!x', '/* @preserve *///x\n\n\n']
 
     testStr(source, '/** @license MIT */\nfoo\n', { comments: 'license' })
-    testStr(source, '/** @license MIT */\n\nfoo\n\n\n', { comments: 'license', maxEmptyLines: 2 })
+    testStr(source, '/** @license MIT */\n\nfoo\n\n\n', {
+      comments: 'license',
+      maxEmptyLines: 2,
+    })
   })
 
   it('"eslint" must preserve ESLint comments', function () {
@@ -123,13 +108,7 @@ describe('Predefined filters', function () { // eslint-disable-line max-lines-pe
   })
 
   it('"eslint" cannot detect some invalid cases', function () {
-    const source = [
-      '/* eslint',
-      '*/',
-      '/* global',
-      '*/',
-      '// eslint-disable-next-line no',
-    ]
+    const source = ['/* eslint', '*/', '/* global', '*/', '// eslint-disable-next-line no']
     testStr(source, source, { comments: 'eslint' })
   })
 
@@ -185,16 +164,16 @@ describe('Predefined filters', function () { // eslint-disable-line max-lines-pe
     const source = [
       '//jslint bitwise',
       '/*jslint bitwise */',
-      '//jslint',               // missing parameter
-      '/* jslint bitwise*/',    // space not allowed
+      '//jslint', // missing parameter
+      '/* jslint bitwise*/', // space not allowed
       '/*jslint\nbitwise\n*/',
       '/*jslint node*/',
       '//global MY_GLOBAL',
       '/*global MY_GLOBAL*/',
       '/*global\nMY_GLOBAL\n*/',
-      '/*global */',            // missing parameter
-      '//global',               // missing parameter
-      '/* global MY_GLOBAL*/',  // space
+      '/*global */', // missing parameter
+      '//global', // missing parameter
+      '/* global MY_GLOBAL*/', // space
       'let a',
     ]
     const expected = [
@@ -224,11 +203,9 @@ describe('Predefined filters', function () { // eslint-disable-line max-lines-pe
     str = str.replace('//# ', '//@ ')
     testStr(str, '0\n//@ sourceURL=abc.ext', opts)
   })
-
 })
 
 describe('Custom filters', function () {
-
   it('can be one regex', function () {
     const str = '//foo\n/* fooooo */'
     testStr(str, str, {
@@ -254,5 +231,4 @@ describe('Custom filters', function () {
       comments: [/foo/],
     })
   })
-
 })

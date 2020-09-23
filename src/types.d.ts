@@ -1,7 +1,11 @@
-
+/** @internal */
 type MagicStr = import('magic-string').default
+
+/** @internal */
 type FilterFn = (mm: RegExpExecArray) => boolean
 
+/** @internal */
+// prettier-ignore
 interface Context {
   changes: boolean        // has the buffer changed?
   buff: string            // the whole working buffer

@@ -16,7 +16,7 @@ const reFinalSpc = /\s+$/g
  * @param start Start of trainling part, can contain non-blank chars
  */
 const finish = (ctx: Context) => {
-
+  //
   // Get trailing whitespace beginning at the last start position
   reFinalSpc.lastIndex = ctx.start
   const mm = reFinalSpc.exec(ctx.buff)
@@ -56,7 +56,7 @@ const skipBracket = (ctx: Context, start: number) => {
     return skipES6Str(ctx, start)
   }
 
-  return start + 1  // skip this
+  return start + 1 // skip this
 }
 
 /**
@@ -90,8 +90,7 @@ const skipFn: { [k: string]: SkipFn } = {
  * @returns `true` if the buffer changed.
  */
 const cleanupBuffer = function (ctx: Context) {
-
-  const re = /["'`{}/]/g
+  const re = /["'/`{}]/g
 
   // Don't cache buff
   let fn: SkipFn

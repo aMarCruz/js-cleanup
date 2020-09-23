@@ -1,7 +1,26 @@
 {
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "javascript.format.enable": false,
   "typescript.disableAutomaticTypeAcquisition": true,
-  "typescript.format.insertSpaceAfterConstructor": true,
-  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "typescript.format.enable": false,
+  "typescript.format.semicolons": "remove",
+  "typescript.suggestionActions.enabled": false,
   "typescript.suggest.completeFunctionCalls": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": true,
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": false
+  },
 }

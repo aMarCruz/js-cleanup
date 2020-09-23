@@ -1,11 +1,10 @@
 // @ts-check
 'use strict'
 
+const expect = require('expect')
 const cleanup = require('..')
-const expect  = require('expect')
 
 describe('Errors', function () {
-
   const R_WRONG_FILT = /unknown comment filter/i
   const R_UNEXPECTED = /unexpected /i
   const R_UNCLOSED = /unclosed /i
@@ -92,5 +91,4 @@ describe('Errors', function () {
       expect(err).toBeAn(Error).toInclude({ position: 7 })
     }
   })
-
 })

@@ -2,7 +2,6 @@
 'use strict'
 
 describe('In regexes', function () {
-
   const testStr = require('./utils/make-tester')({ sourcemap: false })
 
   it('must skip comment-like sequences in regexes', function () {
@@ -32,7 +31,7 @@ describe('In regexes', function () {
   it('must ignore quotes inside regexes', function () {
     testStr('/"/', '/"/')
     testStr('a=/"/0', 'a=/"/0')
-    testStr('c=/\'/\n0', 'c=/\'/\n0')
+    testStr("c=/'/\n0", "c=/'/\n0")
   })
 
   it('hard LS/PS within regex is a SyntaxError, but are normalized anyway', function () {
@@ -42,5 +41,4 @@ describe('In regexes', function () {
     str = 'a=/\u2029/'
     testStr(str, 'a=/\n/')
   })
-
 })

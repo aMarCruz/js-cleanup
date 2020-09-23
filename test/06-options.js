@@ -1,3 +1,4 @@
+/// <reference path="../index.d.ts" />
 // @ts-check
 'use strict'
 
@@ -6,7 +7,7 @@ const testStr = require('./utils/make-tester')({
   sourcemap: false,
 })
 
-/** @typedef {import('..').Options} Options */
+/** @typedef {cleanup.Options} Options */
 
 const emptyLines10 = '\n\n\n\n\n\n\n\n\n\n'
 const emptyLinesTop = emptyLines10 + 'X'
@@ -48,13 +49,11 @@ describe('compactComments', function () {
     opts.maxEmptyLines = -1
     testStr(str, '\n\n/*\n\n\n\n\n*/\n', opts)
 
-    opts.maxEmptyLines = 0  // restore
+    opts.maxEmptyLines = 0 // restore
   })
-
 })
 
 describe('lineEndings', function () {
-
   it('must convert to Unix line-endings with `lineEndings: "unix"`', function () {
     /** @type {Options} */
     const opts = { maxEmptyLines: 1, lineEndings: 'unix' }
@@ -87,7 +86,11 @@ describe('lineEndings', function () {
     testStr(emptyLinesTop, emptyLinesTop.replace(/\n/g, '\r\n'), opts)
     testStr(emptyLinesBottom, emptyLinesBottom.replace(/\n/g, '\r\n'), opts)
     testStr(emptyLinesTopAndBottom, emptyLinesTopAndBottom.replace(/\n/g, '\r\n'), opts)
-    testStr(emptyLinesTopMiddleBottom, emptyLinesTopMiddleBottom.replace(/\n/g, '\r\n'), opts)
+    testStr(
+      emptyLinesTopMiddleBottom,
+      emptyLinesTopMiddleBottom.replace(/\n/g, '\r\n'),
+      opts
+    )
   })
 
   it('must convert to Mac line-endings with `lineEndings: "mac"`', function () {
@@ -123,11 +126,9 @@ describe('lineEndings', function () {
     testStr('\rX \n\r\rXX\nX\r\rX\n\r\n', '\r\nX\r\n\r\n\r\nXX\r\nX\r\n\r\nX\r\n\r\n', opts)
     testStr('\r\n \n\r \r\r\n \r\r \n', '\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n', opts)
   })
-
 })
 
 describe('maxEmptyLines', function () {
-
   it('must keep all the lines by setting `maxEmptyLines: -1`', function () {
     testStr(emptyLines10, emptyLines10, -1)
     testStr(emptyLinesTop, emptyLinesTop, -1)
@@ -183,5 +184,4 @@ describe('maxEmptyLines', function () {
     testStr(str2, '/*@license MIT\n\n\n*/', 2)
     testStr(str2, str2, -1)
   })
-
 })

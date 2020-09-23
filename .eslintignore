@@ -5,3 +5,5 @@
 /test/fixtures
 /test/maps
 **/*.md
+index.d.ts
+index.{js,mjs}

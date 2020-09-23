@@ -5,7 +5,7 @@
  * @param pos Absolute position into the buffer (base 0)
  */
 const makeError = function (err: Error, pos: number) {
-  (err as any).position = pos
+  ;(err as any).position = pos
   return err
 }
 

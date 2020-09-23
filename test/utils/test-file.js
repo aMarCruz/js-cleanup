@@ -1,7 +1,7 @@
-const cleanup = require('../..')
-const expect = require('expect')
 const fs = require('fs')
+const expect = require('expect')
 const joinPath = require('./join-path')
+const cleanup = require('../..')
 
 /**
  * @param {string} file -
@@ -9,10 +9,10 @@ const joinPath = require('./join-path')
  * @param {boolean} [save]
  */
 const testFile = function _testFile (file, opts, save) {
-  const fname     = joinPath('fixtures', file)
-  const expected  = fs.readFileSync(joinPath('expected', file), 'utf8')
-  const code      = fs.readFileSync(fname, 'utf8')
-  const result    = cleanup(code, fname, opts)
+  const fname = joinPath('fixtures', file)
+  const expected = fs.readFileSync(joinPath('expected', file), 'utf8')
+  const code = fs.readFileSync(fname, 'utf8')
+  const result = cleanup(code, fname, opts)
 
   expect(result).toBeAn(Object).toBeTruthy()
   if (save) {

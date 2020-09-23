@@ -1,17 +1,19 @@
 import predefFilters from './predef-filters'
 
+const hasOwnProp = Object.prototype.hasOwnProperty
+
 /**
  * Parses an individual filter.
  *
  * @param filter Filter
  */
 const parseEach = (filter: string | RegExp) => {
-
+  //
   if (filter instanceof RegExp) {
     return filter
   }
 
-  if (predefFilters.hasOwnProperty(filter)) {
+  if (hasOwnProp.call(predefFilters, filter)) {
     return predefFilters[filter]
   }
 
@@ -23,8 +25,8 @@ const parseEach = (filter: string | RegExp) => {
  *
  * @param list User filters
  */
-const makeFilters = (list?: string | RegExp | Array<string | RegExp>) => {
-
+const makeFilters = (list?: string | RegExp | (string | RegExp)[]) => {
+  //
   if (list == null) {
     return [predefFilters.some]
   }
@@ -47,13 +49,13 @@ const makeFilters = (list?: string | RegExp | Array<string | RegExp>) => {
  *
  * @param list Default or defined comment filters
  */
-const getFilterFn = function (list?: string | RegExp | Array<string | RegExp>) {
-
+const getFilterFn = function (list?: string | RegExp | (string | RegExp)[]) {
   const filters = makeFilters(list)
 
   if (filters === true) {
     return () => false
   }
+
   if (filters === false) {
     return () => true
   }
@@ -69,12 +71,10 @@ const getFilterFn = function (list?: string | RegExp | Array<string | RegExp>) {
     let content = mm[0]
 
     // Extract the content, including the `isBlock` indicator
-    content = content[1] === '*'
-      ? content.slice(1, -2)
-      : content.slice(1)
+    content = content[1] === '*' ? content.slice(1, -2) : content.slice(1)
 
     // Search a filter that matches the content
-    return !filters.some((filter) => filter.test(content))
+    return !filters.some(filter => filter.test(content))
   }
 
   return mustRemove

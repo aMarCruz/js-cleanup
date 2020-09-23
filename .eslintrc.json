@@ -1,0 +1,52 @@
+{
+  "root": true,
+
+  "parser": "@typescript-eslint/parser",
+
+  "plugins": ["@typescript-eslint", "prettierx"],
+
+  "extends": [
+    "standardize",
+    "standardize/typescript",
+    "plugin:prettierx/standardize-bundle",
+    "plugin:prettierx/@typescript-eslint"
+  ],
+
+  "rules": {
+    "array-callback-return": 2,
+    "block-scoped-var": 2,
+    "complexity": [2, 6], // default is 20
+    "consistent-return": 2,
+    "consistent-this": [2, "_self"],
+    "guard-for-in": 1,
+    "max-depth": [2, 3],
+    "max-lines-per-function": [
+      2,
+      { "max": 99, "skipBlankLines": true, "skipComments": true }
+    ],
+    "max-lines": [
+      2,
+      { "max": 250, "skipBlankLines": true, "skipComments": true }
+    ],
+    "max-nested-callbacks": [2, 3], // default is 10
+    "max-params": [2, 3],
+    "max-statements": [2, 20],
+    "no-catch-shadow": 2,
+    "no-label-var": 2,
+    "no-native-reassign": 2,
+    "no-var": 2
+  },
+
+  "overrides": [
+    {
+      "files": ["**/test/**/*.{js,ts}"],
+      // https://github.com/sindresorhus/globals/blob/master/globals.json
+      "env": {
+        "mocha": true
+      },
+      "rules": {
+        "import/no-unresolved": 0
+      }
+    }
+  ]
+}

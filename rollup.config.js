@@ -1,11 +1,15 @@
+// @ts-check
 /*
   Rollup configuration.
 */
-const nodeResolve = require('@rollup/plugin-node-resolve')
-const typescript = require('@rollup/plugin-typescript')
-const pkg = require('./package.json')
+import nodeResolve from '@rollup/plugin-node-resolve'
+import typescript from '@wessberg/rollup-plugin-ts'
+import pkg from './package.json'
 
-const external = Object.keys(pkg.dependencies)
+const external = require('module').builtinModules.concat(
+  Object.keys(pkg.dependencies),
+  Object.keys(pkg.devDependencies)
+)
 
 const banner = `/**
  * js-cleanup v${pkg.version}
@@ -16,26 +20,25 @@ const banner = `/**
 
 export default {
   input: pkg.source,
-  plugins: [
-    nodeResolve(),
-    typescript({
-      module: 'es6',
-      sourceMap: true,
-      target: 'es6',
-      include: 'src/*.ts',
-    }),
-  ],
   external,
-  output: [{
-    banner,
-    file: pkg.main,
-    format: 'cjs',
-    interop: false,
-    sourcemap: true,
-  }, {
-    banner,
-    file: pkg.module,
-    format: 'es',
-    sourcemap: true,
-  }],
+  plugins: [typescript(), nodeResolve()],
+  output: [
+    {
+      banner,
+      file: pkg.main,
+      format: 'cjs',
+      interop: false,
+      preferConst: true,
+      sourcemap: true,
+      exports: 'auto',
+    },
+    {
+      banner,
+      file: pkg.module,
+      format: 'es',
+      preferConst: true,
+      sourcemap: true,
+      exports: 'default',
+    },
+  ],
 }

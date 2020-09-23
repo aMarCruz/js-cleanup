@@ -4,7 +4,6 @@
 const testStr = require('./utils/make-tester')({ sourcemap: false })
 
 describe('Comments remotion', function () {
-
   it('must trim trailing whitespace inside comments', function () {
     testStr('/*\n @license X \n*/', '/*\n @license X\n*/')
     testStr('/* \n @license X \n */', '/*\n @license X\n */')
@@ -82,11 +81,7 @@ describe('Comments remotion', function () {
   })
 
   it('must remove consecutive comments', function () {
-    const source = [
-      '/*x*/',
-      'foo /*x*/',
-      '/**//**/\n\n\n\n',
-    ].join('\n')
+    const source = ['/*x*/', 'foo /*x*/', '/**//**/\n\n\n\n'].join('\n')
 
     testStr(source.replace(/\n/g, ''), 'foo')
     testStr(source, 'foo\n')
@@ -98,26 +93,24 @@ describe('Comments remotion', function () {
     const source = [
       '/*',
       'This is a long comment',
-      Array(200).join('Nostrud minim nisi aliqua non aute dolor ullamco anim eu consectetur. '),
-      Array(200).join('Fugiat esse culpa voluptate laborum ea dolor ut qui aliquip cillum irure.'),
+      new Array(200).join(
+        'Nostrud minim nisi aliqua non aute dolor ullamco anim eu consectetur. '
+      ),
+      new Array(200).join(
+        'Fugiat esse culpa voluptate laborum ea dolor ut qui aliquip cillum irure.'
+      ),
       '*/0',
     ]
     testStr(source, '0')
   })
 
-  it('must remove comments even if there\'s no changes in line-endings', function () {
-    const source = [
-      '/* to remove */foo',
-      ' /**/ bar',
-      'baz',
-    ]
+  it("must remove comments even if there's no changes in line-endings", function () {
+    const source = ['/* to remove */foo', ' /**/ bar', 'baz']
     testStr(source, 'foo\n  bar\nbaz', { comments: null })
   })
-
 })
 
 describe('Comments remotion (one-line and mixed)', function () {
-
   it('must remove comments at top', function () {
     testStr('// top', '')
     testStr('// top\n', '')
@@ -156,23 +149,12 @@ describe('Comments remotion (one-line and mixed)', function () {
   })
 
   it('must remove comments in any position', function () {
-    const source = [
-      '//top',
-      'foo //right',
-      '//right',
-      'foo',
-      ' // bottom',
-    ]
+    const source = ['//top', 'foo //right', '//right', 'foo', ' // bottom']
     testStr(source, 'foo\nfoo\n')
   })
 
   it('must remove mixed consecutive comments', function () {
-    const source = [
-      '/**/',
-      '/*x*/',
-      'foo // x',
-      '/**///x\n\n\n\n',
-    ].join('\n')
+    const source = ['/**/', '/*x*/', 'foo // x', '/**///x\n\n\n\n'].join('\n')
 
     testStr(source.replace(/\n/g, ''), 'foo')
     testStr(source, 'foo\n')
@@ -201,5 +183,4 @@ describe('Comments remotion (one-line and mixed)', function () {
     const source = '/* a\u2029 b\u2028 */\n'
     testStr(source, '\n\n\n', -1)
   })
-
 })
