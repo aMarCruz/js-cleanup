@@ -21,7 +21,7 @@ With js-cleanup you have:
 
 Although js-cleanup is not locked to a particular JavaScript dialect and can handle any JS-like file: TypeScript, Flow, React, ES9, etc, it is mainly a _postprocessor_, so it should be runned in a later stage of your toolchain, after any preprocessor or transpiler.
 
-js-cleanup requires node 10.12 or 12.0 or above.
+js-cleanup requires node v10.13 or above, but **avoid the buggy v11.x**
 
 **Why not Uglify?**
 
