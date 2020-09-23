@@ -10,8 +10,8 @@ init:
 # Test against this version of Node.js
 environment:
   matrix:
-  # node.js
-  - nodejs_version: "10.13.0"
+  # node.js 10.14.2 (because Prettier)
+  - nodejs_version: "10.14.2"
   - nodejs_version: "12"
 
 matrix:
