@@ -35,7 +35,7 @@ const predefFilters: { [k: string]: RegExp } = {
   sources: /^.[#@][\t ]+source(?:Mapping)?URL=/,
 
   // http://www.typescriptlang.org/docs
-  ts: /^(?:\/\/\s*<(?:reference\s|amd-[a-z]).*>|.\s*@(?:jsx[\t ]|ts-(?:check|nocheck|ignore)\b))/,
+  ts: /^(?:\/\/\s*<(?:reference\s|amd-[a-z]).*>|.\s*@(?:jsx[\t ]|ts-(?:check|nocheck|ignore|expect-error)\b))/,
 
   // http://www.typescriptlang.org/docs/handbook/triple-slash-directives.html
   ts3s: /^\/\/\s*<(?:reference\s|amd-[a-z]).*>/,
