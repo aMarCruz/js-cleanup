@@ -1,4 +1,12 @@
+<!-- markdownlint-disable MD013 -->
+
 # Changes of js-cleanup
+
+## \[1.2.1] - 2022-02-02
+
+### Added
+
+- [Add @ts-expect-error to TS directives](aMarCruz/js-cleanup#19), thanks to @vostrnad
 
 ## \[1.2.0] - 2020-09-22
 
@@ -45,3 +53,4 @@
 ## \[0.9.0] - 2018-12-26
 
 - Initial Release.
+<!-- markdownlint-enable MD013 -->
