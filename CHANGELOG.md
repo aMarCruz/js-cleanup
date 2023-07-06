@@ -8,6 +8,10 @@
 
 - [Add @ts-expect-error to TS directives](aMarCruz/js-cleanup#19), thanks to @vostrnad
 
+### Changed
+
+- Update rule value in VS Code's settings
+
 ## \[1.2.0] - 2020-09-22
 
 ### Changed
